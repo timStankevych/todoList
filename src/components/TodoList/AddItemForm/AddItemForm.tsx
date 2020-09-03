@@ -1,4 +1,7 @@
 import React, {useState, ChangeEvent, KeyboardEvent} from 'react';
+import {IconButton, TextField} from '@material-ui/core';
+import {ControlPoint} from '@material-ui/icons';
+
 
 type PropsType = {
     addItem: (title: string) => void
@@ -49,14 +52,19 @@ export function AddItemForm(props: PropsType) {
             {/*<div>*/}
             {/*    <input type='checkbox' checked={isSelectedAll} onChange={allSelectedHandler}/><span>Выбрать все</span>*/}
             {/*</div>*/}
-            <input
+            <TextField
+                variant={'outlined'}
+                label={'your task'}
+                error={!!error}
+                helperText={error}
                 value={title}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPressHandler}
                 className={error ? 'error' : ''}
             />
-            <button onClick={onAddTaskClick}>Add</button>
-            {error && <div className={'error-message'}>{error}</div>}
+            <IconButton onClick={onAddTaskClick} color={'primary'}>
+                <ControlPoint/>
+            </IconButton>
         </div>
     )
 }
