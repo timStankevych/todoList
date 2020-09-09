@@ -32,7 +32,7 @@ function App() {
     let [todoLists, setTodoLists] = useState<Array<TodoListType>>([
         {id: todoListID1, title: 'What to learn', filter: 'all'},
         {id: todoListID2, title: 'What to buy', filter: 'all'},
-    ])
+    ]);
 
     let [tasks, setTasks] = useState<TaskStateType>({
         [todoListID1]: [
@@ -47,7 +47,7 @@ function App() {
             {id: v1(), title: 'Cow', isDone: false},
             {id: v1(), title: 'Horse', isDone: false}
         ],
-    })
+    });
 
     const addTodoList = (title: string) => {
         let newTodoListID = v1();
@@ -59,8 +59,8 @@ function App() {
         setTodoLists([newTodoList, ...todoLists]);
         setTasks({
             [newTodoListID]: [], ...tasks
-        })
-    }
+        });
+    };
 
     function removeTask(id: string, todolistID: string) {
         let todoList = tasks[todolistID];
@@ -72,32 +72,32 @@ function App() {
         let todoList = todoLists.find(tl => tl.id === todoListID);
         if (todoList) {
             todoList.filter = value;
-            setTodoLists([...todoLists])
+            setTodoLists([...todoLists]);
         }
     }
 
     function addTask(title: string, todoListID: string) {
         let newTask = {id: v1(), title: title, isDone: false};
         let todoList = tasks[todoListID];
-        tasks[todoListID] = [newTask, ...todoList]
-        setTasks({...tasks})
+        tasks[todoListID] = [newTask, ...todoList];
+        setTasks({...tasks});
     }
 
     function changeStatus(id: string, isDone: boolean, todoListID: string) {
         let todoList = tasks[todoListID];
-        let task = todoList.find(t => t.id === id)
+        let task = todoList.find(t => t.id === id);
         if (task) {
-            task.isDone = isDone
-            setTasks({...tasks})
+            task.isDone = isDone;
+            setTasks({...tasks});
         }
     }
 
     function changeTaskTitle(id: string, title: string, todoListID: string) {
         let todoList = tasks[todoListID];
-        let task = todoList.find(t => t.id === id)
+        let task = todoList.find(t => t.id === id);
         if (task) {
-            task.title = title
-            setTasks({...tasks})
+            task.title = title;
+            setTasks({...tasks});
         }
     }
 
@@ -149,23 +149,23 @@ function App() {
 
                             return (<Grid item>
                                     <Paper style={{padding: '10px'}}>
-                                    <Todolist
-                                        key={tl.id}
-                                        id={tl.id}
-                                        title={tl.title}
-                                        tasks={taskForTodolist}
-                                        removeTask={removeTask}
-                                        changeFilter={changeFilter}
-                                        addTask={addTask}
-                                        changeTaskStatus={changeStatus}
-                                        filter={tl.filter}
-                                        removeTodoList={removeTodoList}
-                                        changeTaskTitle={changeTaskTitle}
-                                        changeTodolistTitle={changeTodolistTitle}
-                                    />
+                                        <Todolist
+                                            key={tl.id}
+                                            id={tl.id}
+                                            title={tl.title}
+                                            tasks={taskForTodolist}
+                                            removeTask={removeTask}
+                                            changeFilter={changeFilter}
+                                            addTask={addTask}
+                                            changeTaskStatus={changeStatus}
+                                            filter={tl.filter}
+                                            removeTodoList={removeTodoList}
+                                            changeTaskTitle={changeTaskTitle}
+                                            changeTodolistTitle={changeTodolistTitle}
+                                        />
                                     </Paper>
                                 </Grid>
-                            )
+                            );
                         })
                     }
                 </Grid>

@@ -27,46 +27,45 @@ export function Todolist(props: PropsType) {
     const onCompletedClickHandler = () => props.changeFilter('completed', props.id);
 
 
-
     const addTask = (title: string) => {
-        props.addTask(title, props.id)
-    }
+        props.addTask(title, props.id);
+    };
 
     const changeTodolistTitle = (newTitle: string) => {
-        props.changeTodolistTitle(props.id, newTitle)
-    }
+        props.changeTodolistTitle(props.id, newTitle);
+    };
 
-    const removeTodoList = () => props.removeTodoList(props.id)
+    const removeTodoList = () => props.removeTodoList(props.id);
 
     return <div>
         <h3>
             <EditableSpan value={props.title} changeValue={changeTodolistTitle}/>
             <IconButton onClick={removeTodoList} aria-label="delete">
-                <Delete />
+                <Delete/>
             </IconButton>
         </h3>
-            <AddItemForm addItem={addTask}/>
+        <AddItemForm addItem={addTask}/>
         <ul>
             {
                 props.tasks.map(t => {
                     const removeTask = () => props.removeTask(t.id, props.id);
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         let newIsDoneValue = e.currentTarget.checked;
-                        props.changeTaskStatus(t.id, newIsDoneValue, props.id)
-                    }
+                        props.changeTaskStatus(t.id, newIsDoneValue, props.id);
+                    };
 
                     const changeTaskTitle = (title: string) => {
-                        props.changeTaskTitle(t.id, title, props.id)
-                    }
+                        props.changeTaskTitle(t.id, title, props.id);
+                    };
                     return (
                         <li key={t.id} className={t.isDone ? 'is-done' : ''}>
                             <Checkbox onChange={onChangeHandler} checked={t.isDone}/>
                             <EditableSpan value={t.title} changeValue={changeTaskTitle}/>
                             <IconButton onClick={removeTask} aria-label="delete">
-                                <Delete />
+                                <Delete/>
                             </IconButton>
                         </li>
-                    )
+                    );
                 })
             }
         </ul>
@@ -84,5 +83,5 @@ export function Todolist(props: PropsType) {
                 Completed
             </Button>
         </div>
-    </div>
+    </div>;
 }
