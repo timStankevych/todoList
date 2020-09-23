@@ -20,7 +20,7 @@ export type  TodoListType = {
     filter: FilterValueType
 }
 
-type TaskStateType = {
+export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
@@ -34,7 +34,7 @@ function App() {
         {id: todoListID2, title: 'What to buy', filter: 'all'},
     ]);
 
-    let [tasks, setTasks] = useState<TaskStateType>({
+    let [tasks, setTasks] = useState<TasksStateType>({
         [todoListID1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JS', isDone: true},
@@ -49,31 +49,12 @@ function App() {
         ],
     });
 
-    const addTodoList = (title: string) => {
-        let newTodoListID = v1();
-        let newTodoList: TodoListType = {
-            id: newTodoListID,
-            title: title,
-            filter: 'all',
-        };
-        setTodoLists([newTodoList, ...todoLists]);
-        setTasks({
-            [newTodoListID]: [], ...tasks
-        });
-    };
+
 
     function removeTask(id: string, todolistID: string) {
         let todoList = tasks[todolistID];
         tasks[todolistID] = todoList.filter(t => t.id !== id);
         setTasks({...tasks});
-    }
-
-    function changeFilter(value: FilterValueType, todoListID: string) {
-        let todoList = todoLists.find(tl => tl.id === todoListID);
-        if (todoList) {
-            todoList.filter = value;
-            setTodoLists([...todoLists]);
-        }
     }
 
     function addTask(title: string, todoListID: string) {
@@ -101,6 +82,16 @@ function App() {
         }
     }
 
+
+
+    function changeFilter(value: FilterValueType, todoListID: string) {
+        let todoList = todoLists.find(tl => tl.id === todoListID);
+        if (todoList) {
+            todoList.filter = value;
+            setTodoLists([...todoLists]);
+        }
+    }
+
     function changeTodolistTitle(newTitle: string, id: string) {
         const todoList = todoLists.find(tl => tl.id === id);
         if (todoList) {
@@ -115,6 +106,19 @@ function App() {
         delete tasks[todoListID];
         setTasks({...tasks});
     }
+
+    function addTodoList (title: string) {
+        let newTodoListID = v1();
+        let newTodoList: TodoListType = {
+            id: newTodoListID,
+            title: title,
+            filter: 'all',
+        };
+        setTodoLists([newTodoList, ...todoLists]);
+        setTasks({
+            [newTodoListID]: [], ...tasks
+        });
+    };
 
     // @ts-ignore
     return (
