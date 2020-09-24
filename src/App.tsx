@@ -38,14 +38,10 @@ function App() {
         [todoListID1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JS', isDone: true},
-            {id: v1(), title: 'ReactJS', isDone: false},
-            {id: v1(), title: 'Redux', isDone: false}
         ],
         [todoListID2]: [
             {id: v1(), title: 'Dog', isDone: true},
             {id: v1(), title: 'Cat', isDone: true},
-            {id: v1(), title: 'Cow', isDone: false},
-            {id: v1(), title: 'Horse', isDone: false}
         ],
     });
 
