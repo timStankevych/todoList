@@ -7,35 +7,37 @@ type PropsType = {
     addItem: (title: string) => void
 }
 
-export function AddItemForm(props: PropsType) {
+export const AddItemForm = React.memo( (props: PropsType) => {
+
+    console.log('AddItemForm called');
 
     let [title, setTitle] = useState<string>('');
-    let [error, setError] = useState<string | null>(null)
-
+    let [error, setError] = useState<string | null>(null);
 
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setError(null);
         setTitle(e.currentTarget.value);
-    };
+    }
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
+        if (error !== null) {
+            setError(null);
+        }
         if (e.charCode === 13) {
             onAddTaskClick();
         }
-    };
+    }
 
     const onAddTaskClick = () => {
         if (title.trim() !== '') {
             props.addItem(title.trim());
             setTitle('');
         } else {
-            setError('Введи заголовок таски')
+            setError('Введи заголовок таски');
         }
-    };
-
-    return(
+    }
+    return (
         <div>
             <TextField
                 variant={'outlined'}
@@ -51,5 +53,5 @@ export function AddItemForm(props: PropsType) {
                 <ControlPoint/>
             </IconButton>
         </div>
-    )
-}
+    );
+})
