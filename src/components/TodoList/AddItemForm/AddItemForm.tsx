@@ -35,23 +35,8 @@ export function AddItemForm(props: PropsType) {
         }
     };
 
-    // const isSelectedAll = props.tasks.filter(t => t.isDone).length === props.tasks.length
-    //
-    // const allSelectedHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     props.selectedAll(e.currentTarget.checked, props.id)
-    // }
-
-    // function selectedAll(value: boolean, todoListID: string) {
-    //     let todoList = tasks[todoListID];
-    //     let newTask = todoList.map(t => ({...t, isDone: value}))
-    //     setTasks({...tasks})
-    // }
-
     return(
         <div>
-            {/*<div>*/}
-            {/*    <input type='checkbox' checked={isSelectedAll} onChange={allSelectedHandler}/><span>Выбрать все</span>*/}
-            {/*</div>*/}
             <TextField
                 variant={'outlined'}
                 label={'your task'}
