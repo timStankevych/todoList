@@ -13,7 +13,10 @@ export const EditableSpan = React.memo((props: PropsType) => {
     let [editMode, setEditMode] = useState<boolean>(false);
     let [title, setTitle] = useState(props.value);
 
-    const activatedEditMode = () => setEditMode(true);
+    const activatedEditMode = () =>  {
+        setEditMode(true);
+        setTitle(props.value);
+    }
 
     const deActivatedEditMode = () => {
         setEditMode(false);
@@ -28,7 +31,7 @@ export const EditableSpan = React.memo((props: PropsType) => {
         ? <TextField
             value={title}
             onBlur={deActivatedEditMode}
-            autoFocus={true}
+            autoFocus
             onChange={onChangeTitle}
         />
         : <span onDoubleClick={activatedEditMode} tabIndex={2}>{props.value}</span>

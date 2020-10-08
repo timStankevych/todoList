@@ -60,7 +60,6 @@ function AppWithRedux() {
                             return <Grid item key={tl.id}>
                                 <Paper style={{padding: '10px'}}>
                                     <Todolist
-                                        key={tl.id}
                                         id={tl.id}
                                         filter={tl.filter}
                                     />
