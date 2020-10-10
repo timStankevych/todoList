@@ -27,8 +27,6 @@ type ActionsType = RemoveTodoListActionType
     | ChangeTodolistFilterActionType
 
 let initialState: Array<TodoListType> = [
-    {id: todoListID1, title: 'What to learn', filter: 'all'},
-    {id: todoListID2, title: 'What to buy', filter: 'all'},
 ];
 
 

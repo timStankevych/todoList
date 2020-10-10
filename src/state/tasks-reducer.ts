@@ -35,16 +35,7 @@ type ActionsType = RemoveTaskActionType
 export let todoListID1 = v1();
 export let todoListID2 = v1();
 
-let initialState: TasksStateType = {
-    [todoListID1]: [
-        {id: v1(), title: 'HTML&CSS', isDone: true},
-        {id: v1(), title: 'JS', isDone: true},
-    ],
-    [todoListID2]: [
-        {id: v1(), title: 'Dog', isDone: true},
-        {id: v1(), title: 'Cat', isDone: true},
-    ],
-};
+let initialState: TasksStateType = {};
 
 export const tasksReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
